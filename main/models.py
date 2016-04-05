@@ -77,3 +77,7 @@ class SpecificationInstanceValue(models.Model):
 		verbose_name = 'Значение поля спецификации'
 		verbose_name_plural = 'Значения полей спецификации'
 
+#Table of texts
+class Texts(models.Model):
+	title = models.CharField(max_length=200, verbose_name='Название')
+	text = RedactorField(max_length=3000, verbose_name='Текст')

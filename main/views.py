@@ -12,8 +12,9 @@ def catalog(request):
 	return render_to_response('category.html', context={'categories' : cs})
 
 def product_list(request, category_id):
+	category = Category.objects.get(id=category_id)
 	ps = Product.objects.filter(category__id=category_id)
-	return render_to_response('product_list.html', context={'products' : ps,  'category_id':category_id})
+	return render_to_response('product_list.html', context={'products' : ps,  'category_id':category_id, 'category':category})
 
 def product(request, category_id, product_id):
 	prod = Product.objects.get(id=product_id)
