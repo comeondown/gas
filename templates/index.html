@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+	<title>Главная</title>
+{% endblock %}
+{% block content %}
+	
+	<div class="content">
+		<header class="header">
+			
+			<img class="header__image-right" align="right" src='{% static "img/title.png" %}' >	
+			<img class="header__image-left" align="left" src='{% static "img/logo.png" %}' >	
+		</header>
+
+		<main class="main-index">
+
+			<div class="banner">
+			
+			</div>
+			<!--
+			<nav class="nav">
+				<a href="{% url 'catalog' %}">
+					Каталог				
+				</a>
+				<a href="{% url 'catalog' %}">
+					О Нас
+				</a>
+				<a href="{% url 'catalog' %}">
+					Партнеры
+				</a>	
+			</nav>
+			-->
+			<div class="site-info">
+				
+			</div>
+			<div class="main-menu">
+				<a class="main-menu__button main-menu__button--catalog" href="{% url 'catalog' %}"><div class="main-menu__text">
+					<h2>Каталог</h2>
+				</div></a>
+				<a class="main-menu__button main-menu__button--about" href="{% url 'catalog' %}"><div class="main-menu__text"> <h2>О нас</h2> </div></a>
+				<a class="main-menu__button main-menu__button--partners" href="{% url 'catalog' %}"><div class="main-menu__text"> <h2>Партнеры</h2> </div></a>
+			</div>
+			<div class="site-info">
+				
+			</div>
+		</main>
+	</div>
+	<footer class="footer">
+		<p>Advanced Completion Equipment. 2016</p>
+	</footer>
+	
+	
+{% endblock %}

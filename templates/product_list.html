@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+	<title>Каталог</title>
+{% endblock %}
+{% block content%}
+		<div class="content">
+			<header class="header">
+				<img class="header__image-right" align="right" src='{% static "img/title.png" %}' >	
+				<img class="header__image-left" align="left" src='{% 	static "img/logo.png" %}' >	
+			</header>
+			<main class="main-index">
+
+				<nav class="nav">
+					<a href="{% url 'index' %}">
+						Главная			
+					</a>
+					<a href="{% url 'catalog' %}">
+						Каталог				
+					</a>
+					<a href="{% url 'catalog' %}">
+						О Нас
+					</a>
+					<a href="{% url 'catalog' %}">
+						Партнеры
+					</a>	
+				</nav>
+
+				<div class="banner banner--second-narrow banner--product-list">
+					<h1>Заканчивание скважины.</h1>
+				</div>
+
+				<div class="product-list">
+					<div class="product-list__list">
+						
+						{% for p in products %}
+							<a  class="product-link" href="{% url 'product' category_id p.id %}" data-image="{{p.image.url}}">{{p}}</a>
+							<br/>
+						{% endfor %}
+
+					</div>	
+					<div class="image-preview">
+
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<footer class="footer">
+			<p>Advanced Completion Equipment. 2016</p>
+		</footer>
+	
+{% endblock %}
