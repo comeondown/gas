@@ -95,7 +95,7 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	text-shadow:  1px 1px 2px black, 0 0 1em #000;
 }
 .nav{
-	margin-bottom: 15px;
+	margin-bottom: 15px;	
 	text-align: center;
 }
 .nav a{
@@ -192,7 +192,11 @@ table{
 	border-collapse:collapse;
 }
 table th{
+	font-size: 10px;
 	border-bottom: 1px;
+}
+table td{
+	font-size: 10px;
 }
 table td, table th{
 	padding: 5px;
