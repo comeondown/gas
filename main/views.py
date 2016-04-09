@@ -20,6 +20,9 @@ def product(request, category_id, product_id):
 	prod = Product.objects.get(id=product_id)
 	return render_to_response('product.html', context={'product':prod})
 
+def about(request):
+	return render_to_response('about.html')
+
 # Custom filters
 
 

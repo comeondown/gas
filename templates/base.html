@@ -9,10 +9,21 @@
 	</head>
 	<body>
 		<div class="main-wrapper">
+			<div class="content">
+			<header class="header">
+			
+				<img class="header__image-center" align="center" src='{% static "img/title.png" %}' >	
+				<img class="header__image-left" align="left" src='{% static "img/logo.png" %}' >	
+				<img class="header__image-right" align="right" src='{% static "img/sjs-logo.jpg" %}' >
+			</header>
 			{% block content %}
-
+		
 			{% endblock %}
+			<footer class="footer">
+				<p>Advanced Completion Equipment. 2016 +7 (812) 336 82 41</p>
+			</footer>	
 		</div>
+
 		<script src="{% static 'js/script.js'%}" ></script>
 	</body>
 

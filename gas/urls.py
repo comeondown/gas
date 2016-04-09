@@ -11,6 +11,7 @@ urlpatterns = [
      url(r'^catalog/([0-9]+)/([0-9]+)', product, name='product'),
     url(r'^catalog/([0-9]+)', product_list, name='product_list'),
     url(r'^catalog/', catalog, name='catalog'),
+    url(r'^about/', about, name='about'),
 	url(r'^$', index, name='index'),
 ]
 

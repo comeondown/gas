@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load next %}
+{% load specification_cell_filter %}
+{% block title %}
+	<title>О нас</title>
+{% endblock %}
+{% block content%}
+	
+
+	<main class="main-index">
+		
+		<nav class="nav">
+			<a href="{% url 'index' %}">
+				Главная				
+			</a>
+			<a href="{% url 'catalog' %}">
+				Каталог				
+			</a>
+			<a href="{% url 'catalog' %}">
+				О Нас
+			</a>
+			<a href="{% url 'catalog' %}">
+				Партнеры
+			</a>	
+		</nav>
+	<br/>
+
+		<div class="banner banner--second-narrow banner--about">
+			<h1>О нас</h1>
+		</div>
+
+		<div class="about-text">
+			<p>Компания "Advanced Cmpletion Equipment" OOO "ACE" основана в 2014 году. Располагается в Санкт-Петербурге.
+			Одним из направлений работы является оказание консультаций при выборе, дальнейшая организация продаж и сервис внутрискважинного оборудования. Предлагаемое нами внутрискважинное оборудование производится на совместном американо-китайском предприятии SERVA SJS, расположенном в провинции Хубей на берегу реки Янцзы в центральной части Китая.</p>
+			<p>Производственная компания SERVA SJS сертифицирована по программам качества ISO 9001 и DNV с 1999 года. Внутрискважинное оборудование сертифицировано по API 11D1 с 2005 года.</p>
+			<p>Уникальная, современная и мощная производственная база, использование новейших технологий и материалов, позволяет реализовать самые смелые замыслы в интересах заказчиков, решать сложнейший задачи.</p>
+			<p class="about-text__important">Главными целями компании являются надёжность в партнерстве, качество в работе, уверенность в будущем!</p>
+			<div class="about-text__contacts">
+
+				<div class="about-text__images">
+					<img width="350px" src="{% static 'img/about-pics.png'%}">
+				</div>
+				<div class="about-text__text-contacts">
+					<div class="about-text__contacts-title">
+						Advanced Completion Equipment
+					</div>
+					<p>Адрес: Санкт-Петербург,</p>
+					<p>В.О., 13 линия, 78 оф. 455</p>
+					<p>тел./факс: +7 (812) 336 82 41</p>
+					<p>www.ace-spb.ru</p>
+				</div>
+
+			</div>
+		</div>
+	</main>
+
+
+{% endblock %}

@@ -5,10 +5,7 @@
 {% endblock %}
 {% block content%}
 		<div class="content">
-			<header class="header">
-				<img class="header__image-right" align="right" src='{% static "img/title.png" %}' >	
-				<img class="header__image-left" align="left" src='{% 	static "img/logo.png" %}' >	
-			</header>
+
 			<main class="main-index">
 
 				<nav class="nav">
@@ -18,7 +15,7 @@
 					<a href="{% url 'catalog' %}">
 						Каталог				
 					</a>
-					<a href="{% url 'catalog' %}">
+					<a href="{% url 'about' %}">
 						О Нас
 					</a>
 					<a href="{% url 'catalog' %}">
@@ -45,9 +42,5 @@
 				</div>
 			</main>
 		</div>
-
-		<footer class="footer">
-			<p>Advanced Completion Equipment. 2016</p>
-		</footer>
 	
 {% endblock %}
