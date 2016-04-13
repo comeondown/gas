@@ -17,8 +17,8 @@ class Category(models.Model):
 class Product(models.Model):
 	title = models.CharField(max_length=300, verbose_name="Название")
 	category = models.ForeignKey(Category)
-	desctiption = RedactorField(max_length=1000, verbose_name="Описание")
-	text = RedactorField(max_length=2000, verbose_name="Особенности")
+	desctiption = RedactorField(max_length=3000, verbose_name="Описание")
+	text = RedactorField(max_length=3000, verbose_name="Особенности")
 	image = models.ImageField(upload_to='images/')
 
 	class Meta:
@@ -51,10 +51,12 @@ class SpecificationField(models.Model):
 class SpecificationInstance(models.Model):
 	product = models.ForeignKey(Product)
 	index = models.CharField(max_length=100)
+	number= models.IntegerField()
 
 	class Meta:
 		verbose_name = 'Экземпляр спецификации'
 		verbose_name_plural = 'Экземпляры спецификации'
+		ordering = ['number']
 
 	def __str__(self):
 		return '{}'.format(self.index)
@@ -71,12 +73,12 @@ class SpecificationInstance(models.Model):
 class SpecificationInstanceValue(models.Model):
 	specification_instance = models.ForeignKey(SpecificationInstance)
 	specification_field = models.ForeignKey(SpecificationField)
-	value = models.CharField(max_length=50)
+	value = models.CharField(max_length=1500)
+
 
 	class Meta:
 		verbose_name = 'Значение поля спецификации'
 		verbose_name_plural = 'Значения полей спецификации'
-
 #Table of texts
 class Texts(models.Model):
 	title = models.CharField(max_length=200, verbose_name='Название')

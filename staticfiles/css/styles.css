@@ -72,9 +72,11 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	background-image: url("../img/banner-black.jpg");
 	background-size: cover;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	text-shadow:  1px 1px 2px black, 0 0 1em #000;
+}
+.banner--main{
 	padding-top: 35px;
 	padding-right: 25px;
-	text-shadow:  1px 1px 2px black, 0 0 1em #000;
 }
 .banner-text{
 	text-align: right;
@@ -85,7 +87,7 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	height: 150px;
 }
 .banner--second-narrow{
-	height: 85px;
+	height:85px;
 }
 .banner--category{
 	background-image: url("../img/banner-black.jpg");
@@ -208,20 +210,22 @@ table{
 	border-collapse:collapse;
 }
 table th{
-	font-size: 10px;
+	font-size: 11px;
 	border-bottom: 1px;
 }
 table td{
+	font-size: 11px;
+	max-width: 90px;
 	font-size: 10px;
 }
 table td, table th{
-	padding: 5px;
 	text-align: center;
 	border: 1px solid #9c9e9f;
 	background-color: #c7d5ee;
 }
 .table-index-row{
 	background-color: white;
+	width: 70px;
 }
 .product-list{
 	overflow:hidden;
@@ -290,7 +294,6 @@ table td, table th{
 }
 .banner--about{
 	font-size: 35px;
-	line-height: 85px;
 	color: #fff;
 	text-align: center;
 	text-transform: uppercase;
