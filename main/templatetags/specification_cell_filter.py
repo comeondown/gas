@@ -17,6 +17,19 @@ def find_value(field ,row):
 			return v.value
 	return ''
 
+def check_bottom_cell_rowspan(field, this_value, index, instances_list, depth=0):
+	
+	if index == len(instances_list)-1:
+		return depth
+	
+	that_value = find_value(field, instances_list[index])
+	if that_value==this_value:
+		depth += 1
+		return check_bottom_cell_rowspan(field, this_value, index+1, instances_list, depth)
+	else:
+		return depth
+
+
 @register.filter
 def specification_cell_filter(field, row):
 	flag = False
@@ -25,17 +38,18 @@ def specification_cell_filter(field, row):
 	instances_list = list(product.specificationinstance_set.all())
 	index = instances_list.index(row)
 	#Counter of colspan
-	counter_colspan = 0;
+	counter_rowspan = 0;
 	this_value = find_value(field, row)
 
-	for r in range(index, len(instances_list)):
-		that_value=find_value(field, instances_list[r])
-		if that_value==this_value:
-			counter_colspan += 1
+	counter_rowspan = check_bottom_cell_rowspan (field, this_value, index, instances_list, 0)
+#	for r in range(index, len(instances_list)):
+#		that_value=find_value(field, instances_list[r])
+#		if that_value==this_value:
+#			counter_rowspan += 1
 
 	if (index != 0) and (find_value(field, instances_list[index-1]) == this_value):
 		return None
 	else:
-		return "<td rowspan="+ str(counter_colspan) +">"+ this_value +"</td>"
+		return "<td rowspan="+ str(counter_rowspan) +">"+ this_value +"</td>"
 	
 

@@ -15,37 +15,29 @@ class SpecificationInstanceInline(admin.StackedInline):
 	model = SpecificationInstance
 	extra = 1
 
-#class SpecificationInstanceValueInlineForm(forms.ModelForm):
+class SpecificationInstanceValueInline(admin.TabularInline):
+	model = SpecificationInstanceValue
+	fields = ['specification_field', 'specification_instance','value']
+	extra = 1
 
 #	def __init__(self, *args, **kwargs):
-#		super(SpecificationInstanceValueInlineForm, self).__init__(*args, **kwargs)
-#		self.fields['specification_field'].queryset = SpecificationField.objects.filter(product__exact=self.instance.specification_instance)
+#		self.parent_object = kwargs['obj']
+#		del kwargs['obj']
+#		super (ExchangeInline, self).__init__(*args, **kwargs)
 
+	def formfield_for_foreignkey(self, db_field, request, **kwargs):
+		instance = self.get_object(request, SpecificationInstance)
+		kwargs['queryset']=SpecificationField.objects.filter(product__pk=instance.product.pk)
+		return super(SpecificationInstanceValueInline, self).formfield_for_foreignkey(db_field, **kwargs)
 
-class SpecificationInstanceValueInline(admin.TabularInline):
-
-	model = SpecificationInstanceValue
-	fields = ['specification_field', 'specification_instance']
-	extra = 1
-#	form = SpecificationInstanceValueInlineForm
-
-
-
-
-
-	def formfield_for_foreignkey(self, db_field, request=None, obj=None, **kwargs):
-	
-		field = super(SpecificationInstanceValueInline, self).formfield_for_foreignkey(db_field, request, **kwargs)
-		instance = SpecificationInstance.objects.get(id=request.GET['instance'])
-		field.queryset = field.queryset.filter(product__exact = instance.product)
-		
-		return field
+	def get_object(self, request, model):
+		object_id = request.META['PATH_INFO'].strip('/').split('/')[-2]
+		return model.objects.get(pk=int(object_id))
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('title', 'category', 'desctiption', 'admin_thumbnail',)
 	inlines = [SpecificationFieldInline, SpecificationInstanceInline]
-
 
 
 @admin.register(SpecificationField)
@@ -62,9 +54,3 @@ class SpecificationInstanceAdmin(admin.ModelAdmin):
 @admin.register(SpecificationInstanceValue)
 class SpecificationInstanceValueAdmin(admin.ModelAdmin):
 	list_display = ('specification_instance', 'specification_field', 'value')
-
-
-
-
-
-# Register your models here.
