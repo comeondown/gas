@@ -19,13 +19,13 @@ def find_value(field ,row):
 
 def check_bottom_cell_rowspan(field, this_value, index, instances_list, depth=0):
 	
-	if index == len(instances_list)-1:
-		return depth
-	
 	that_value = find_value(field, instances_list[index])
+	
 	if that_value==this_value:
 		depth += 1
-		return check_bottom_cell_rowspan(field, this_value, index+1, instances_list, depth)
+		if (index != len(instances_list)-1):
+			return check_bottom_cell_rowspan(field, this_value, index+1, instances_list, depth)
+		return depth
 	else:
 		return depth
 

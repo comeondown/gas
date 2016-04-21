@@ -215,7 +215,7 @@ table th{
 }
 table td{
 	font-size: 11px;
-	max-width: 90px;
+	height: 22px;
 	font-size: 10px;
 }
 table td, table th{
