@@ -31,13 +31,14 @@ class SpecificationInstanceValueInline(admin.TabularInline):
 		return super(SpecificationInstanceValueInline, self).formfield_for_foreignkey(db_field, **kwargs)
 
 	def get_object(self, request, model):
-		object_id = request.META['PATH_INFO'].strip('/').split('/')[-2]
+		object_id = request.META['PATH_INFO'].strip('/').split('/')[-1]
 		return model.objects.get(pk=int(object_id))
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-	list_display = ('title', 'category', 'desctiption', 'admin_thumbnail',)
+	list_display = ('id','title', 'category', 'desctiption', 'admin_thumbnail',)
 	inlines = [SpecificationFieldInline, SpecificationInstanceInline]
+	search_fields = ['id']
 
 
 @admin.register(SpecificationField)

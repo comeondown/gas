@@ -31,7 +31,7 @@
 					<div class="product-list__list">
 						
 						{% for p in products %}
-							<a  class="product-link" href="{% url 'product' category_id p.id %}" data-image="{{p.image.url}}">{{p}}</a>
+							<a  class="product-link" href="{% url 'product' p.id %}" data-image="{{p.image.url}}">{{p}}</a>
 							<br/>
 						{% endfor %}
 

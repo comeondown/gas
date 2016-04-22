@@ -44,59 +44,67 @@
 						<div class="style-title">
 							Спецификации
 						</div>
-	
-						<table class="pure-table pure-table-bordered">
-							<tr>
-								<th rowspan="2" class="table-index-row">
-									Номер по каталогу
-								</th>
-								{% for field in product.specificationfield_set.all %}
-									{% if field.measure %}
-										<th>
-											{{ field.title }}
-										</th>
-									{% else %}
-										<th rowspan="2">
-											{{ field.title }}
-										</th>
-									{% endif %}
-								{% endfor %}
-								
-							</tr>
-
-							<tr>
-									
+		
+							<table class="pure-table pure-table-bordered">
+								<tr>
+									<th rowspan="2" class="table-index-row">
+										Номер по каталогу
+									</th>
 									{% for field in product.specificationfield_set.all %}
-										
-											{% if field.measure %}<th>{{ field.measure }}</th>{% endif %}
-										
+										{% if field.measure %}
+											<th>
+												{{ field.title }}
+											</th>
+										{% else %}
+											<th rowspan="2">
+												{{ field.title }}
+											</th>
+										{% endif %}
 									{% endfor %}
-							</tr>
+									
+								</tr>
 
-								{% for row in product.specificationinstance_set.all %}
-
+								<tr>
 										
-										<tr>
+										{% for field in product.specificationfield_set.all %}
 											
-											<td class="table-index-row">
-												{{row.index}}
-											</td>
+												{% if field.measure %}<th>{{ field.measure }}</th>{% endif %}
+											
+										{% endfor %}
+								</tr>
 
-											{% for field in product.specificationfield_set.all %}
+									{% for row in product.specificationinstance_set.all %}
 
-												{% if field|specification_cell_filter:row %}
-													{{field|specification_cell_filter:row|safe}}
-												{% endif %}
+											
+											<tr>
+												
+												<td class="table-index-row">
+													{{row.index}}
+												</td>
 
-											{% endfor %}
+												{% for field in product.specificationfield_set.all %}
 
-										</tr>
+													{% if field|specification_cell_filter:row %}
+														{{field|specification_cell_filter:row|safe}}
+													{% endif %}
 
-								{% endfor %}
+												{% endfor %}
 
-						
-						</table>
-					{% endif %}
+											</tr>
+
+									{% endfor %}
+
+							
+							</table>
+						{% else %}
+
+							{% if user.is_authenticated %}
+								<a href="{% url 'add_specification' product.id %}">Добавить спецификацию</a>
+							{% endif %}
+
+						{% endif %}
+
+					
 				</div>
 				<div class="product-info__image">
 					<img width="200px" src="{{product.image.url}}" >
