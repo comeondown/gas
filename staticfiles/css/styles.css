@@ -72,7 +72,7 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 }
 .banner{
 	display: block;
-	height: 250px;
+	height: 620px;
 	background-image: url("../img/banner-black.jpg");
 	background-size: cover;
 	margin-top: 10px;
@@ -83,14 +83,17 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	padding-right: 25px;
 }
 .banner-text{
+	margin-top: 150px;
 	text-align: right;
 	font-size: 40px;
 	color: #fff;
 }
 .banner--narrow{
+	background-position: 0 -250px;
 	height: 150px;
 }
 .banner--second-narrow{
+	background-position: 0 -250px;
 	height:85px;
 }
 .banner--category{
@@ -220,7 +223,6 @@ table th{
 table td{
 	font-size: 11px;
 	height: 22px;
-	font-size: 10px;
 }
 table td, table th{
 	text-align: center;
@@ -229,7 +231,6 @@ table td, table th{
 }
 .table-index-row{
 	background-color: white;
-	width: 70px;
 }
 .product-list{
 	overflow:hidden;
@@ -341,4 +342,7 @@ table td, table th{
 	background-color: #fff;
 	position: fixed;
 	top:0px;
+}
+.menu-centered{
+	height: 40px;
 }
