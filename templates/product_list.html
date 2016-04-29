@@ -8,19 +8,6 @@
 
 			<main class="main-index">
 
-				<nav class="nav">
-					<a href="{% url 'index' %}">
-						Главная			
-					</a>
-					<a href="{% url 'catalog' %}">
-						Каталог				
-					</a>
-					<a href="{% url 'about' %}">
-						О Нас
-					</a>
-
-				</nav>
-
 				<div class="banner banner--second-narrow banner--product-list">
 					<h1>{{category.title}}</h1>
 				</div>
@@ -29,10 +16,12 @@
 					<div class="product-list__list">
 						
 						{% for p in products %}
-							<a  class="product-link" href="{% url 'product' p.id %}" data-image="{{p.image.url}}">{{p}}</a>
-							<br/>
+							<div style="margin-bottom: 5px;">
+								<a style="border-bottom:1px solid #ececec;" class="product-link" href="{% url 'product' p.id %}" data-image="{{p.image.url}}">{{p}}</a>
+								<br/>
+							</div>
 						{% endfor %}
-
+						
 					</div>	
 					<div class="image-preview">
 
