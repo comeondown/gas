@@ -20,7 +20,7 @@ class Product(models.Model):
 	desctiption = RedactorField(max_length=3000, verbose_name="Описание")
 	text = RedactorField(max_length=3000, verbose_name="Особенности")
 	image = models.ImageField(upload_to='images/')
-
+	specification_image = models.ImageField(upload_to='images/specifications')
 	class Meta:
 		verbose_name = 'Продукт'
 		verbose_name_plural = 'Продукты'
