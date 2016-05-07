@@ -25,7 +25,7 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	width: 1000px;
 	height: 100%;
 	margin: 0 auto 0 auto;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	margin-top: 45px;
 }
 .content{
 	min-height: 100%;
@@ -72,10 +72,10 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 }
 .banner{
 	display: block;
-	height: 250px;
+	height: 620px;
 	background-image: url("../img/banner-black.jpg");
 	background-size: cover;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	margin-top: 10px;
 	text-shadow:  1px 1px 2px black, 0 0 1em #000;
 }
 .banner--main{
@@ -83,14 +83,17 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	padding-right: 25px;
 }
 .banner-text{
+	margin-top: 150px;
 	text-align: right;
 	font-size: 40px;
 	color: #fff;
 }
 .banner--narrow{
+	background-position: 0 -250px;
 	height: 150px;
 }
 .banner--second-narrow{
+	background-position: 0 -250px;
 	height:85px;
 }
 .banner--category{
@@ -136,7 +139,7 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 
 }
 .main-menu__button{
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
 	transition: all 0.2s ease-in-out;
 	background-color: #444;
 	display: inline-flex;
@@ -173,7 +176,7 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	margin: 0 auto 0 auto;
 }
 .main-menu__button:hover{
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	
 }
 .main-menu .main-menu__button:nth-child(3n+3){
 	margin-right: 0;
@@ -220,7 +223,6 @@ table th{
 table td{
 	font-size: 11px;
 	height: 22px;
-	font-size: 10px;
 }
 table td, table th{
 	text-align: center;
@@ -229,7 +231,6 @@ table td, table th{
 }
 .table-index-row{
 	background-color: white;
-	width: 70px;
 }
 .product-list{
 	overflow:hidden;
@@ -237,7 +238,7 @@ table td, table th{
 	margin-bottom: 80px;
 }
 .product-list__list{
-	width: 550px;
+	width: 75%;
 	font-size: 20px;
 	float: left;
 }
@@ -250,7 +251,7 @@ table td, table th{
 	text-decoration: underline;
 }
 .image-preview{
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	
 	max-height: 400px;
 	position: fixed;
 	bottom: 35px;
@@ -272,14 +273,21 @@ table td, table th{
 	width: 700px;
 	background-color: #e7e7e8;
 }
+.product-info__text p{
+	margin-bottom:0px;
+}
+.product-info__text table td, .product-info__text table th{
+	padding: 0px;
+}
 .product-info__image{
 	text-align: center;
 	float: right;
-	width: 250px;
+	width: 100px;
 	margin-bottom: 70px;
+	margin-right: 100px;
 }
 .product-info__image img{
-	width: 150px;
+	width: 75px;
 
 }
 .product-info__description{
@@ -327,12 +335,27 @@ table td, table th{
 	width: 150px;
 	float: left;
 }
+.about-text__images img{
+	max-width:none;
+}
 .about-text__text-contacts{
 	float: right;
+}
+.about-text__text-contacts p{
+	margin-bottom:0px;
 }
 .about-text__contacts-title{
 	background-color: #dedcdd;
 	color: #931d29;
 	padding: 4px 6px 4px 6px;
 	margin-bottom: 10px;
+}
+.top-menu{
+	width: 100%;
+	background-color: #fff;
+	position: fixed;
+	top:0px;
+}
+.menu-centered{
+	height: 40px;
 }

@@ -5,25 +5,29 @@
 	<head>
 		<link href='{% static "css/styles.css" %}' rel='stylesheet'>
 		<link href='{% static "css/foundation.css" %}' rel='stylesheet'>
+		<script src='{% static "js/jquery.js" %}'></script>
+		
 		{% block title %}
 		{% endblock %}
 	</head>
 	<body>
+
 	<div class="menu-centered top-menu">
-		<ul class="menu">
+
+		<ul class="dropdown menu" data-dropdown-menu>
 			<li>
 				<a href="{% url 'index' %}">
-					Главная				
+					<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/home.png' %}">Главная				
 				</a>
 			</li>
 			<li>
 				<a href="{% url 'catalog' %}">
-					Каталог				
+					<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/list-menu.png' %}">Каталог				
 				</a>
 			</li>
 			<li>
 				<a href="{% url 'about' %}">
-					О Нас
+					<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/business-cards.png' %}">О Нас
 				</a>
 			</li>
 		</ul>
@@ -31,22 +35,24 @@
 		<div class="main-wrapper">
 			<div class="content">
 
-			<header class="header">
+			<!-- <header class="header">
 			
 				<img class="header__image-center" align="center" src='{% static "img/title.png" %}' >	
 				<img class="header__image-left" align="left" src='{% static "img/logo.png" %}' >	
 				<img class="header__image-right" align="right" src='{% static "img/sjs-logo.jpg" %}' >
-			</header>
+			</header> -->
 			
 			{% block content %}
 		
 			{% endblock %}
+
 			<footer class="footer">
 				<p>Advanced Completion Equipment. 2016 +7 (812) 336 82 41</p>
 			</footer>	
 		</div>
-
+		<script src='{% static "js/foundation.js" %}'></script>
 		<script src="{% static 'js/script.js'%}" ></script>
+		
 	</body>
 
 </html>

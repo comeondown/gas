@@ -6,7 +6,7 @@ from . import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^sjsadminpanel/', include(admin.site.urls)),
     url(r'^redactor/', include('redactor.urls')),
     url(r'^product/([0-9]+)', product, name='product'),
     url(r'^catalog/([0-9]+)', product_list, name='product_list'),

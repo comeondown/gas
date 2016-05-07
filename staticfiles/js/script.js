@@ -16,6 +16,7 @@ var mouseOutListener = function(){
 };
 
 window.onload = function(){
+	$(document).foundation()
 	var links = document.getElementsByClassName('product-link');
 	console.log(links);
 	for (var i=0; i<links.length; i++){
