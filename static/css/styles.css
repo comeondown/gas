@@ -25,7 +25,6 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	width: 1000px;
 	height: 100%;
 	margin: 0 auto 0 auto;
-	margin-top: 45px;
 }
 .content{
 	min-height: 100%;
@@ -72,17 +71,21 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 }
 .banner{
 	display: block;
-	height: 620px;
-	background-image: url("../img/banner-black.jpg");
+	height: 350px;
+	background-image: url("../img/banner-black-final.jpg");
 	background-size: cover;
 	margin-top: 10px;
 	text-shadow:  1px 1px 2px black, 0 0 1em #000;
 }
 .banner--main{
+	position: relative;
 	padding-top: 35px;
 	padding-right: 25px;
 }
 .banner-text{
+	position: absolute;
+	right: 25px;
+	bottom: 20px;
 	margin-top: 150px;
 	text-align: right;
 	font-size: 40px;
@@ -185,11 +188,46 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 
 }
 .site-info{
-	width: 65%;
+	
+	width: 100%;
 	margin: 0 auto 0 auto;
 	font-size: 25px;
 	text-align: center;
 }
+.site-info__products{
+	
+}
+.site-info__products ul {
+	border: 2px solid #1c4582;
+	border-radius: 4px;
+}
+.site-info__products ul li{
+	font-size: 16px;
+	border-bottom: 2px solid #1c4582;
+}
+.site-info_products-menu-title{
+	font-weight: bold;
+}
+.site-info_see-all a{
+	font-weight: bold;
+	font-size: 14px;
+	color: #931d29;
+}
+.site-info_see-all a:hover{
+
+	color: #BBAAAA;
+}
+.site-info__main{
+	
+}
+.site-info__news{
+	
+}
+.site-info__photos{
+	padding: 15px 0 15px 0;
+	
+}
+
 .footer{
 	height: 70px;
 	margin: 0 auto 0 auto;
@@ -353,9 +391,23 @@ table td, table th{
 .top-menu{
 	width: 100%;
 	background-color: #fff;
-	position: fixed;
-	top:0px;
 }
 .menu-centered{
 	height: 40px;
+	margin-bottom: 10px;
+}
+.menu-centered.index-menu{
+	margin: 10px 0 20px 0;
+}
+.menu-centered ul li{
+	min-width: 200px;
+}
+.red-line, .blue-line{
+	margin-top: 15px;
+}
+.red-line{
+	border-bottom: 5px solid #931d29;
+}
+.blue-line{
+	border-bottom: 5px solid #1c4582;
 }
