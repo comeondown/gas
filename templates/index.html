@@ -5,39 +5,99 @@
 {% endblock %}
 {% block content %}
 	
-	
-
-		<main class="main-index">
-
+			<main class="main-index">
+			<div align="right">СПб, В.О. 13 линия 78, оф. 455 email: info@ace-spb.r, +7 (812) 336 82 41</div>
 			<div class="banner banner--main">
 				<div class="banner-text">
-										
-					<p>г. Санкт-петербург</p>
-
-					<p>В.О., 13 линия</p>
-					<p>78 оф. 455</p>
-					<p></p>
-
-					<p>+7 (812) 336 82 41</p>
+					<a href="{% url 'catalog' %}"><img width="100px" src="{% static 'img/catalog-button.png' %}" ></a>
 				</div>
 			</div>
 
 			<div class="site-info">
-				
-			</div>
-			<div style="text-align:center" class="main-menu">
-				<a class="main-menu__button main-menu__button--catalog" href="{% url 'catalog' %}"><div class="main-menu__text">
-					<h2>Каталог</h2>
-				</div></a>
-				<a class="main-menu__button main-menu__button--about" style="margin-right:0px;" href="{% url 'about' %}"><div class="main-menu__text"> <h2>О нас</h2> </div></a>
-<!--				<a class="main-menu__button main-menu__button--partners" href="{% url 'catalog' %}"><div class="main-menu__text"> <h2>Партнеры</h2> </div></a>-->
-			</div>
-			<div class="site-info">
-				<p>Компания "Advanced Completion Equipment" OOO "ACE" основана в 2014 году. Располагается в Санкт-Петербурге.
-				Одним из направлений работы является оказание консультаций при выборе, дальнейшая организация продаж и сервис внутрискважинного оборудования.</p>
-			</div>
+				<div class="site-info__wrapper row">
+					<div class="site-info__menu">
+						
+						<div class="menu-centered index-menu">
+
+							<ul class="dropdown menu" data-dropdown-menu>
+								<li>
+									<a href="{% url 'index' %}">
+										<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/home.png' %}">		
+									</a>
+								</li>
+								<li>
+									<a href="{% url 'about' %}">
+										О компании
+									</a>
+								</li>
+								<li>
+									<!--ДОБАВИТЬ СТРАНИЦУ-->
+									<a href="{% url 'about' %}">
+										Контакты
+									</a>
+								<!--	<a href="{% url 'catalog' %}">
+										Каталог				
+									</a>-->
+								</li>
+								<li>
+									<a href="{% url 'catalog' %}">
+										Услуги
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="site-info__products small-3 columns" style="padding-left:0px;padding-right: 0px;">
+						<div>
+							<ul class="menu vertical">
+								<li class="site-info_products-menu-title">Оборудование</li>
+								{% for p in products_list %}
+									<li><a href="{% url 'product' p.id %}">{{p.title}}</a></li>
+								{% endfor %}
+								<li class="site-info_see-all"><a href="{% url 'catalog' %}">Посмотреть все</a>
+							</ul>
+						</div>
+					</div>
+					<div class="site-info__main small-9 columns row" style="margin-left: 25%">
+						
+						<div class="site-info__news columns row">
+								<div class="gallery items-3">
+
+								  {% for n in news %}
+								  	<div id="item-{{forloop.counter}}" class="control-operator"></div>
+								  {% endfor %}
+								  
+									{% for n in news %}
+										  <figure style="margin:0px;padding: 0px;" class="item">
+										  	<h1>Новости</h1>
+										    <p>{{n.text|safe}}</p>
+										  </figure>
+									{% endfor %}
+
+								  <div class="controls">
+								  {% for n in news %}
+								    <a href="#item-{{forloop.counter}}" class="control-button">•</a>
+								  {% endfor %}
+
+								  </div>
+								</div>
+						</div>
+
+
+					</div>
+
+				</div>
+				<div class="site-info__photos">
+						<img width="20%" src="{% static 'img/ludi.jpg' %}" alt="">
+						<img width="20%" src="{% static 'img/cekh.jpg' %}" alt="">
+						<img width="20%" src="{% static 'img/zavodi2.jpg' %}" alt="">
+						<img width="20%" src="{% static 'img/cekh2.jpg' %}" alt="">
+				</div>	
+			</div>	
+			<div class="blue-line"></div>
+			<div class="red-line"> </div>
 		</main>
 	</div>
-	
-	
+		
 {% endblock %}

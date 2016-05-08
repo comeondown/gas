@@ -3,8 +3,10 @@
 <html>
 	
 	<head>
+		<link rel="icon" type="image/png" href="{% static 'img/favicon-32x32.png' %}" sizes="32x32">
 		<link href='{% static "css/styles.css" %}' rel='stylesheet'>
 		<link href='{% static "css/foundation.css" %}' rel='stylesheet'>
+		<link href='{% static "css/gallery.prefixed.css" %}' rel='stylesheet'>
 		<script src='{% static "js/jquery.js" %}'></script>
 		
 		{% block title %}
@@ -12,26 +14,29 @@
 	</head>
 	<body>
 
-	<div class="menu-centered top-menu">
+	{% if not index %}
 
-		<ul class="dropdown menu" data-dropdown-menu>
-			<li>
-				<a href="{% url 'index' %}">
-					<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/home.png' %}">Главная				
-				</a>
-			</li>
-			<li>
-				<a href="{% url 'catalog' %}">
-					<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/list-menu.png' %}">Каталог				
-				</a>
-			</li>
-			<li>
-				<a href="{% url 'about' %}">
-					<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/business-cards.png' %}">О Нас
-				</a>
-			</li>
-		</ul>
-	</div>
+		<div class="menu-centered top-menu">
+
+			<ul class="dropdown menu" data-dropdown-menu>
+				<li>
+					<a href="{% url 'index' %}">
+						<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/home.png' %}">Главная				
+					</a>
+				</li>
+				<li>
+					<a href="{% url 'catalog' %}">
+						<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/list-menu.png' %}">Каталог				
+					</a>
+				</li>
+				<li>
+					<a href="{% url 'about' %}">
+						<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/business-cards.png' %}">О Нас
+					</a>
+				</li>
+			</ul>
+		</div>
+	{% endif  %}
 		<div class="main-wrapper">
 			<div class="content">
 
@@ -45,9 +50,9 @@
 			{% block content %}
 		
 			{% endblock %}
-
+			
 			<footer class="footer">
-				<p>Advanced Completion Equipment. 2016 +7 (812) 336 82 41</p>
+				<p>Advanced Completion Equipment. 2016 СПб, В.О. 13 линия 78, оф. 455 email: info@ace-spb.r, +7 (812) 336 82 41</p>
 			</footer>	
 		</div>
 		<script src='{% static "js/foundation.js" %}'></script>

@@ -2,13 +2,20 @@ from django.shortcuts import render, render_to_response
 from main.models import *
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+import random
 import json
 
 
 
 def index(request):
 	cs = Category.objects.all()
-	return render_to_response('index.html', context={'categories' : cs})
+	news = News.objects.all();
+	products = Product.objects.all();
+	products_list = [];
+	index = True;
+	for i in range(0,4):
+		products_list.append(random.choice(products));
+	return render_to_response('index.html', context={'categories' : cs, 'news':news[0:3],'products_list':products_list, 'index':True})
 
 def catalog(request):
 	cs = Category.objects.all()

@@ -18,7 +18,7 @@ class Product(models.Model):
 	title = models.CharField(max_length=300, verbose_name="Название")
 	category = models.ForeignKey(Category)
 	desctiption = RedactorField(max_length=3000, verbose_name="Описание")
-	text = RedactorField(max_length=3000, verbose_name="Особенности")
+	text = RedactorField(max_length=3000, verbose_name="Особенности", blank=True)
 	image = models.ImageField(upload_to='images/')
 	specification_image = models.ImageField(upload_to='images/specifications')
 	class Meta:
@@ -83,3 +83,8 @@ class SpecificationInstanceValue(models.Model):
 class Texts(models.Model):
 	title = models.CharField(max_length=200, verbose_name='Название')
 	text = RedactorField(max_length=3000, verbose_name='Текст')
+
+class News(models.Model):
+	date_created = models.DateTimeField(auto_now_add=True)
+	title = models.CharField(max_length=500, verbose_name='Название новости')
+	text = RedactorField(max_length=3000, verbose_name='Текст новости')
