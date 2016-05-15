@@ -8,8 +8,11 @@
 			<main class="main-index">
 			<div align="right">
 			Санкт-Петербург, В. О., 13 линия, 78 оф. 455<br>
-+7 (812) 336 82 41 <br>
-			info@ace-spb.ru <br>
+			<img src="{% static 'img/phone-icon.png' %}" width="20px"> +7 (812) 336 82 41 <br>
+			<img src="{% static 'img/email-icon.png' %}" width="20px"> info@ace-spb.ru <br>
+			</div>
+			<div class="main-logo">
+				
 			</div>
 			<div class="banner banner--main">
 				<div class="banner-text">
@@ -30,13 +33,13 @@
 									</a>
 								</li>
 								<li>
-									<a href="{% url 'about' %}">
+									<a style="font-size:22px;text-transform: uppercase;" href="{% url 'about' %}">
 										О компании
 									</a>
 								</li>
 								<li>
 									<!--ДОБАВИТЬ СТРАНИЦУ-->
-									<a href="{% url 'about' %}">
+									<a style="font-size:22px;text-transform: uppercase;" href="{% url 'about' %}">
 										Контакты
 									</a>
 								<!--	<a href="{% url 'catalog' %}">
@@ -44,7 +47,7 @@
 									</a>-->
 								</li>
 								<li>
-									<a href="{% url 'catalog' %}">
+									<a style="font-size:22px;text-transform: uppercase;" href="{% url 'catalog' %}">
 										Услуги
 									</a>
 								</li>
@@ -59,7 +62,7 @@
 								{% for p in products_list %}
 									<li><a href="{% url 'product' p.id %}">{{p.title}}</a></li>
 								{% endfor %}
-								<li class="site-info_see-all"><a href="{% url 'catalog' %}">Посмотреть все</a>
+
 							</ul>
 						</div>
 					</div>
@@ -74,7 +77,7 @@
 								  
 									{% for n in news %}
 										  <figure style="margin:0px;padding: 0px;" class="item">
-										  	<h1>Новости</h1>
+										  	<h2>Новости</h2>
 										    <p>{{n.text|safe}}</p>
 										  </figure>
 									{% endfor %}
