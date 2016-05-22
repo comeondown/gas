@@ -14,98 +14,73 @@
 			<div class="main-logo">
 				
 			</div>
-			<div class="banner banner--main">
-				<div class="banner-text">
-					<a href="{% url 'catalog' %}"><img width="100px" src="{% static 'img/catalog-button.png' %}" ></a>
+
+			<div class="index-main-block">
+
+				<div class="site-info__products small-3 columns" style="padding-left:0px;padding-right: 0px;">
+					<div>
+						<ul class="menu vertical">
+
+							{% for p in promoted_products %}
+								<li><a href="{% url 'product' p.id %}">{{p.title}}</a></li>
+							{% endfor %}
+
+						</ul>
+					</div>
 				</div>
+
+
+					<div class="banner-text">
+						<a href="{% url 'catalog' %}"><img width="100px" src="{% static 'img/catalog-button.png' %}" ></a>
+					</div>
 			</div>
 
-			<div class="site-info">
-				<div class="site-info__wrapper row">
-					<div class="site-info__menu">
+			<div class="main-menu-block">
+
+				<ul class="main-menu" >
+					<li>
+						<a href="{% url 'index' %}">
+							<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/home.png' %}">		
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'about' %}">
+							О компании
+						</a>
+					</li>
+					<li>
 						
-						<div class="menu-centered index-menu">
-
-							<ul class="dropdown menu" data-dropdown-menu>
-								<li>
-									<a href="{% url 'index' %}">
-										<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/home.png' %}">		
-									</a>
-								</li>
-								<li>
-									<a style="font-size:22px;text-transform: uppercase;" href="{% url 'about' %}">
-										О компании
-									</a>
-								</li>
-								<li>
-									<!--ДОБАВИТЬ СТРАНИЦУ-->
-									<a style="font-size:22px;text-transform: uppercase;" href="{% url 'about' %}">
-										Контакты
-									</a>
-								<!--	<a href="{% url 'catalog' %}">
-										Каталог				
-									</a>-->
-								</li>
-								<li>
-									<a style="font-size:22px;text-transform: uppercase;" href="{% url 'catalog' %}">
-										Услуги
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-
-				{% if promoted_products %}
-					<div class="site-info__products small-3 columns" style="padding-left:0px;padding-right: 0px;">
-						<div>
-							<ul class="menu vertical">
-								<li class="site-info_products-menu-title">Оборудование</li>
-								{% for p in promoted_products %}
-									<li><a href="{% url 'product' p.id %}">{{p.title}}</a></li>
-								{% endfor %}
-
-							</ul>
-						</div>
-					</div>
-				{% endif  %}
-					<div class="site-info__main small-9 columns row" style="margin-left: 25%">
-						
-						<div class="site-info__news columns row">
-								<div class="gallery items-3">
-
-								  {% for n in news %}
-								  	<div id="item-{{forloop.counter}}" class="control-operator"></div>
-								  {% endfor %}
-								  
-									{% for n in news %}
-										  <figure style="margin:0px;padding: 0px;" class="item">
-										  	<h2>Новости</h2>
-										    <p>{{n.text|safe}}</p>
-										  </figure>
-									{% endfor %}
-
-								  <div class="controls">
-								  {% for n in news %}
-								    <a href="#item-{{forloop.counter}}" class="control-button">•</a>
-								  {% endfor %}
-
-								  </div>
-								</div>
-						</div>
-
-
-					</div>
-
-				</div>
+						<a href="{% url 'about' %}">
+							Контакты
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'catalog' %}">
+							Каталог				
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'catalog' %}">
+							Услуги
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div style="overflow:auto">
 				<div class="site-info__photos">
-						<img width="20%" src="{% static 'img/ludi.jpg' %}" alt="">
-						<img width="20%" src="{% static 'img/cekh.jpg' %}" alt="">
-						<img width="20%" src="{% static 'img/zavodi2.jpg' %}" alt="">
-						<img width="20%" src="{% static 'img/cekh2.jpg' %}" alt="">
+							<img width="20%" src="{% static 'img/ludi.jpg' %}" alt="">
+							<img width="20%" src="{% static 'img/cekh.jpg' %}" alt="">
+							<img width="20%" src="{% static 'img/zavodi2.jpg' %}" alt="">
+							<img width="20%" src="{% static 'img/cekh2.jpg' %}" alt="">
 				</div>	
 			</div>	
-			<div class="blue-line"></div>
-			<div class="red-line"> </div>
+
+				<div class="blue-line"></div>
+				<div class="red-line"> </div>
+			
+
+
 		</main>
 	</div>
 		
