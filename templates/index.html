@@ -6,10 +6,10 @@
 {% block content %}
 	
 			<main class="main-index">
-			<div align="right">
-			Санкт-Петербург, В. О., 13 линия, 78 оф. 455<br>
-			<img src="{% static 'img/phone-icon.png' %}" width="20px"> +7 (812) 336 82 41 <br>
-			<img src="{% static 'img/email-icon.png' %}" width="20px"> info@ace-spb.ru <br>
+			<div align="right" class="contacts-top">
+			Санкт-Петербург, В . О. <br> 13 линия, 78 оф. 455<br>
+				<img src="{% static 'img/phone-icon.png' %}" width="20px"> +7 (812) 336 82 41 <br>
+				<img src="{% static 'img/email-icon.png' %}" width="20px"> info@ace-spb.ru <br>
 			</div>
 			<div class="main-logo">
 				
@@ -55,17 +55,19 @@
 						</div>
 					</div>
 
+				{% if promoted_products %}
 					<div class="site-info__products small-3 columns" style="padding-left:0px;padding-right: 0px;">
 						<div>
 							<ul class="menu vertical">
 								<li class="site-info_products-menu-title">Оборудование</li>
-								{% for p in products_list %}
+								{% for p in promoted_products %}
 									<li><a href="{% url 'product' p.id %}">{{p.title}}</a></li>
 								{% endfor %}
 
 							</ul>
 						</div>
 					</div>
+				{% endif  %}
 					<div class="site-info__main small-9 columns row" style="margin-left: 25%">
 						
 						<div class="site-info__news columns row">

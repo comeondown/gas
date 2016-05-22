@@ -21,6 +21,8 @@ class Product(models.Model):
 	text = RedactorField(max_length=3000, verbose_name="Особенности", blank=True)
 	image = models.ImageField(upload_to='images/')
 	specification_image = models.ImageField(upload_to='images/specifications')
+	promoted = models.BooleanField(default=False)
+
 	class Meta:
 		verbose_name = 'Продукт'
 		verbose_name_plural = 'Продукты'

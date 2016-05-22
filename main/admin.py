@@ -40,7 +40,7 @@ class SpecificationInstanceValueInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-	list_display = ('id','title', 'category', 'desctiption', 'admin_thumbnail',)
+	list_display = ('id','title', 'category', 'desctiption', 'admin_thumbnail','promoted')
 	inlines = [SpecificationFieldInline, SpecificationInstanceInline]
 	search_fields = ['id']
 
