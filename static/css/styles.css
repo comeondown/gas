@@ -69,13 +69,21 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	padding: 5px 25px 25px 25px;
 
 }
+.main-logo{
+	background-image: url("../img/mainlogo.jpg");
+	background-size: contain;
+	background-repeat: no-repeat; 
+	height: 160px;
+}
 .banner{
 	display: block;
 	height: 350px;
-	background-image: url("../img/banner-black-final.jpg");
-	background-size: cover;
+	background-image: url("../img/blacklogo.jpg");
+	background-size: 550px auto;
+	background-repeat: no-repeat;
+	background-position: right;
 	margin-top: 10px;
-	text-shadow:  1px 1px 2px black, 0 0 1em #000;
+	text-shadow: 1px 1px 2px black, 0 0 1em #000;
 }
 .banner--main{
 	position: relative;
@@ -92,10 +100,12 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	color: #fff;
 }
 .banner--narrow{
+	background-size: cover;
 	background-position: 0 -250px;
 	height: 150px;
 }
 .banner--second-narrow{
+	background-size: cover;
 	background-position: 0 -250px;
 	height:85px;
 }
@@ -191,22 +201,27 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	
 	width: 100%;
 	margin: 0 auto 0 auto;
-	font-size: 25px;
+	font-size: 20px;
 	text-align: center;
 }
 .site-info__products{
 	
 }
 .site-info__products ul {
-	border: 2px solid #1c4582;
-	border-radius: 4px;
+	border: none;
+}
+.site-info__products ul li:first-child{
+	border: none;
+	border-bottom: 2px solid #1c4582;
 }
 .site-info__products ul li{
 	font-size: 16px;
-	border-bottom: 2px solid #1c4582;
+	border: 2px solid #1c4582;
+	border-top: none;
 }
 .site-info_products-menu-title{
 	font-weight: bold;
+	border: none;
 }
 .site-info_see-all a{
 	font-weight: bold;
@@ -231,12 +246,12 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 .footer{
 	height: 70px;
 	margin: 0 auto 0 auto;
-	padding-top: 30px;
+	padding-right: 30px;
 }
 .footer p{
 
 	font-size: 15px;
-	text-align: center;
+	text-align: right;
 }
 
 .style-title{
@@ -403,7 +418,7 @@ table td, table th{
 	min-width: 200px;
 }
 .red-line, .blue-line{
-	margin-top: 15px;
+	margin-top: 5px;
 }
 .red-line{
 	border-bottom: 5px solid #931d29;
