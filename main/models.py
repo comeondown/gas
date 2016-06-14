@@ -22,6 +22,7 @@ class Product(models.Model):
 	image = models.ImageField(upload_to='images/')
 	specification_image = models.ImageField(upload_to='images/specifications')
 	promoted = models.BooleanField(default=False)
+	promoted_name = models.CharField(max_length=300)	
 
 	class Meta:
 		verbose_name = 'Продукт'

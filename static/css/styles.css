@@ -22,13 +22,13 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 }
 .main-wrapper{
 	background: #fff;
-	width: 1000px;
+	width: 800px;
 	height: 100%;
 	margin: 0 auto 0 auto;
 }
 .content{
 	min-height: 100%;
-
+	
 }
 .header, .main-index, .footer{
 	background-color: #fff;
@@ -64,27 +64,30 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 }
 .main-index{
 	display: block;
-	
-	
-	padding: 5px 25px 25px 25px;
-
+	padding: 5px 0px 10px 0px;
+	overflow: auto;
 }
 .main-index .contacts-top{
 	width: 200px;
 	float: right;
-	
+	font-size: 14px;
 }
 .main-logo{
-	background-image: url("../img/mainlogo.jpg");
-	background-size: contain;
+	/*background-image: url("../img/mainlogo.jpg");*/
+	background: url("../img/logo.png"), url("../img/title.png");
+	background-size: 80px, 550px;
+	background-position: 0 0, 95px 15px;
 	background-repeat: no-repeat; 
 	height: 125px;
+}
+.main-index{
+
 }
 .banner{
 	display: block;
 	height: 350px;
 	background-image: url("../img/blacklogo.jpg");
-	background-size: 550px auto;
+	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: right;
 	margin-top: 10px;
@@ -144,20 +147,15 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 .nav a:last-child{
 	margin-right: 0;
 }
-.main-menu{
-	width: 710px;
-	margin: 0 auto 0 auto;
-	padding-top: 15px;
-	padding-bottom: 70px;
-}
-.main-menu a{
-	margin-top: 25px;
-	color: #FFF;
-    text-decoration: none;
+.promoted-menu li{
 
+	height: 60px;
+}
+.menu.promoted-menu li a{
+
+	padding: 5px 5px 0px 10px ;
 }
 .main-menu__button{
-
 	transition: all 0.2s ease-in-out;
 	background-color: #444;
 	display: inline-flex;
@@ -214,14 +212,15 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 }
 .site-info__products ul {
 	border: none;
+	/*border-top: 2px solid #1c4582;*/
 }
 .site-info__products ul li:first-child{
-	border: none;
-	border-bottom: 2px solid #1c4582;
+	height: 40px;
+	/*border-bottom: 2px solid #1c4582;*/
 }
 .site-info__products ul li{
 	font-size: 16px;
-	border: 2px solid #1c4582;
+	/*border: 2px solid #1c4582;*/
 	border-top: none;
 }
 .site-info_products-menu-title{
@@ -241,22 +240,29 @@ p, h1,h2,h3,h4,h5,h6,ul,li{
 	
 }
 .site-info__news{
-	
+	width: 525px;
+	margin-left: 275px;
+		
+
 }
 .site-info__photos{
 	padding: 15px 0 15px 0;
-	
+	text-align: center;
+	width: 525px;
+	margin-left: 275px;
 }
-
+.site-info__photos img{
+	width: 23%;
+}
 .footer{
 	height: 70px;
 	margin: 0 auto 0 auto;
-	padding-right: 30px;
+	padding-left: 25px;
 }
-.footer p{
 
+.footer p{
 	font-size: 15px;
-	text-align: right;
+	text-align: left;
 }
 
 .style-title{
@@ -362,6 +368,16 @@ table td, table th{
 .product-info__options h2{
 	margin-bottom: 15px;
 }
+.index-main-block{
+	background-image: url("../img/blacklogo.jpg");
+	background-position: top right;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	overflow: auto;
+	position: relative;
+}
 .banner--about{
 	font-size: 35px;
 	color: #fff;
@@ -408,19 +424,25 @@ table td, table th{
 	padding: 4px 6px 4px 6px;
 	margin-bottom: 10px;
 }
-.top-menu{
-	width: 100%;
-	background-color: #fff;
+.main-menu li{
+	display: inline;
+	color: #2199e8;
+	margin: 10px;
 }
-.menu-centered{
-	height: 40px;
-	margin-bottom: 10px;
+.main-menu li a{
+	font-size:15px;
+	text-transform: uppercase;
 }
-.menu-centered.index-menu{
-	margin: 10px 0 20px 0;
+.main-menu{
+	float: right;
+	display: block;
+	margin: 0 auto 0 auto;
+	width: 525px;
+	text-align: center;
+	margin-bottom: 50px;
 }
-.menu-centered ul li{
-	min-width: 200px;
+.main-menu a{
+	margin-top: 35px;
 }
 .red-line, .blue-line{
 	margin-top: 5px;

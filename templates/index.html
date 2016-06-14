@@ -19,10 +19,16 @@
 
 				<div class="site-info__products small-3 columns" style="padding-left:0px;padding-right: 0px;">
 					<div>
-						<ul class="menu vertical">
-
+						<ul class="menu vertical promoted-menu">
+							<li style="text-align:center">Оборудование</li>
 							{% for p in promoted_products %}
-								<li><a href="{% url 'product' p.id %}">{{p.title}}</a></li>
+								<li><a href="{% url 'product' p.id %}">
+									{% if p.promoted_name != '0' %}
+									{{p.promoted_name}}
+									{% else %}
+									{{p.title}}
+									{% endif %}
+								</a></li>
 							{% endfor %}
 
 						</ul>
@@ -67,19 +73,35 @@
 				</ul>
 			</div>
 			
-			<div style="overflow:auto">
+ 						<div class="site-info__news">
+ 								<div class="gallery items-3">
+ 
+ 								  {% for n in news %}
+ 								  	<div id="item-{{forloop.counter}}" class="control-operator"></div>
+ 								  {% endfor %}
+  								  
+  									{% for n in news %}
+  										  <figure style="margin:0px;padding: 0px;" class="item">
+ 										  	<h2>Новости</h2>
+  										    <p>{{n.text|safe}}</p>
+  										  </figure>
+  									{% endfor %}
+ 
+ 								  <div class="controls">
+ 								  {% for n in news %}
+ 								    <a href="#item-{{forloop.counter}}" class="control-button">•</a>
+ 								  {% endfor %}
+ 
+ 								  </div>
+ 								</div>
+ 						</div>
 				<div class="site-info__photos">
-							<img width="20%" src="{% static 'img/ludi.jpg' %}" alt="">
-							<img width="20%" src="{% static 'img/cekh.jpg' %}" alt="">
-							<img width="20%" src="{% static 'img/zavodi2.jpg' %}" alt="">
-							<img width="20%" src="{% static 'img/cekh2.jpg' %}" alt="">
+							<img src="{% static 'img/ludi.jpg' %}" alt="">
+							<img src="{% static 'img/cekh.jpg' %}" alt="">
+							<img src="{% static 'img/zavodi2.jpg' %}" alt="">
+							<img src="{% static 'img/cekh2.jpg' %}" alt="">
+
 				</div>	
-			</div>	
-
-				<div class="blue-line"></div>
-				<div class="red-line"> </div>
-			
-
 
 		</main>
 	</div>
