@@ -156,9 +156,11 @@
 		
 	</footer>
 	<script>
-		document.ready(function(){
+
+		document.load(function(){
 			var image = document.getElementsByClassName('product-image')[0];
-			var image_width_init = image.offsetWidth;
+			var image_width_init = image.style.width;
+			console.log(image_width_init);
 		});
 		
 
@@ -166,7 +168,7 @@
 
 			if (resize_type=="minus"){
 				if ((image.offsetWidth - 50) > 0){
-					image.style.width =(image.offsetWidth - 50) + "px";
+					image.style.width = (image.offsetWidth - 50) + "px";
 				}
 			} else if (resize_type=="plus") {
 				if ((image.offsetWidth + 50) - image_width_init < image_width_init ){
