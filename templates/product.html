@@ -157,9 +157,12 @@
 	</footer>
 	<script>
 
-		document.load(function(){
-			var image = document.getElementsByClassName('product-image')[0];
-			var image_width_init = image.style.width;
+		var image;
+		var image_width_init = -1;
+
+		window.load(function(){
+			image = document.getElementsByClassName('product-image')[0];
+			image_width_init = image.style.width;
 			console.log(image_width_init);
 		});
 		
