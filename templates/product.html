@@ -141,6 +141,7 @@
 				<div class="product-options-image" style="display:none">
 					<button class="pure-button" onclick="resize_image('minus');">Уменьшить</button>
 					<button class="pure-button" onclick="resize_image('plus');">Увеличить</button>
+					<br>
 					<img class="product-image" style="width:'350px'"; src="{{product.image.url}}" >
 				</div>
 			</div>
@@ -161,13 +162,14 @@
 		function resize_image(resize_type){
 
 			if (resize_type=="minus"){
-				if ((image.offsetWidth - 50) > 0){
-					image.style.width = "'" + image.offsetWidth - 50 + "'px";
-				}
+				//if ((image.offsetWidth - 50) > 0){
+					console.log("'" + image.offsetWidth - 50 + "'px");
+					image.style.width = "'" + (image.offsetWidth - 50) + "px'";
+				//}
 			} else if (resize_type=="plus") {
-				if ((image.offsetWidth + 50) - image_width_init < image_width_init ){
-					image.style.width = "'" + image.offsetWidth + 50 + "'px";
-				}
+				//if ((image.offsetWidth + 50) - image_width_init < image_width_init ){
+					image.style.width = "'" + (image.offsetWidth + 50) + "px'";
+				//}
 			}
 		}
 
