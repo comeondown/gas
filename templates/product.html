@@ -160,11 +160,11 @@
 		var image;
 		var image_width_init = -1;
 
-		window.load(function(){
+		window.onload = function(){
 			image = document.getElementsByClassName('product-image')[0];
 			image_width_init = image.style.width;
 			console.log(image_width_init);
-		});
+		};
 		
 
 		function resize_image(resize_type){
