@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load next %}
+{% load specification_cell_filter %}
+{% block title %}
+	<title>{{product.title}}</title>
+{% endblock %}
+{% block content%}
+		<div class="main-index">
+				
+			<br/>
+
+			<div class="product-info">
+				<div class="product-info__text" >
+					<div class="product-info__title">
+						<h3><a href="{% url 'product_list' product.category.id %}">{{product.category}}</a>/{{product.title}}</h3>
+					</div>
+					<hr/>
+					<div class="product-info__description">
+						<h2>Описание</h2>
+						{{product.desctiption | safe }}
+					</div>
+				
+					<div class="product-info__options">
+						<h2>Особенности</h2>
+						{{product.text | safe }}
+					</div>
+
+					{% if product.specificationinstance_set.all %}
+						<div class="style-title">
+							Спецификации
+						</div>
+		
+							<table class="pure-table pure-table-bordered">
+								<tr>
+									<th rowspan="2" class="table-index-row">
+										Номер по каталогу
+									</th>
+									{% for field in product.specificationfield_set.all %}
+										{% if field.measure %}
+											<th>
+												{{ field.title }}
+											</th>
+										{% else %}
+											<th rowspan="2">
+												{{ field.title }}
+											</th>
+										{% endif %}
+									{% endfor %}
+									
+								</tr>
+
+								<tr>
+										
+										{% for field in product.specificationfield_set.all %}
+											
+												{% if field.measure %}<th>{{ field.measure }}</th>{% endif %}
+											
+										{% endfor %}
+								</tr>
+
+									{% for row in product.specificationinstance_set.all %}
+
+											
+											<tr>
+												
+												<td class="table-index-row">
+													{{row.index|safe}}
+												</td>
+
+												{% for field in product.specificationfield_set.all %}
+
+													{% if field|specification_cell_filter:row %}
+														{{field|specification_cell_filter:row|safe}}
+													{% endif %}
+
+												{% endfor %}
+
+											</tr>
+
+									{% endfor %}
+
+							
+							</table>
+						{% else %}
+							{% if product.specification_image %}
+								<img width="100%" src="{{product.specification_image.url}}">
+							{% else %}
+								{% if user.is_authenticated %}
+									<a href="{% url 'add_specification' product.id %}">Добавить спецификацию</a>
+								{% endif %}
+							{% endif %}
+
+						{% endif %}
+
+					
+				</div>
+				<div class="product-info__image">
+					<img width="200px" src="{{product.image.url}}" >
+				</div>
+				</div>
+			</main>
+		</div>
+		
+{% endblock %}

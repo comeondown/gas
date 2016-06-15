@@ -1,26 +1,13 @@
-var mouseOverListener = function(){
-	
-	var img = this.dataset.image;
-	var image_holder = document.getElementsByClassName('image-preview')[0];
-	image_holder.innerHTML = "<img width='75px' src='"+ img +"' >"
-	console.log(img);
+function show_promoted(){
+	var prom = document.getElementsByClassName("index-promoted-products")[0];
+	var cat = document.getElementsByClassName("index-categories")[0];
+	prom.style.display = "block";
+	cat.style.display = "none";
+}
 
-};
-var mouseOutListener = function(){
-	
-	var img = this.dataset.image;
-	var image_holder = document.getElementsByClassName('image-preview')[0];
-	image_holder.innerHTML = "";
-	console.log(img);
-
-};
-
-window.onload = function(){
-	$(document).foundation()
-	var links = document.getElementsByClassName('product-link');
-	console.log(links);
-	for (var i=0; i<links.length; i++){
-		links[i].addEventListener('mouseover', mouseOverListener);
-		links[i].addEventListener('mouseout', mouseOutListener);
-	}
+function show_categories(){
+	var prom = document.getElementsByClassName("index-promoted-products")[0];
+	var cat = document.getElementsByClassName("index-categories")[0];
+	prom.style.display = "none";
+	cat.style.display = "block";
 }

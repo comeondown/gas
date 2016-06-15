@@ -1,109 +1,116 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block title %}
+<!DOCTYPE html>
+<html>
+<head>
 	<title>Главная</title>
-{% endblock %}
-{% block content %}
-	
-			<main class="main-index">
-			<div align="right" class="contacts-top">
-			Санкт-Петербург, В . О. <br> 13 линия, 78 оф. 455<br>
-				<img src="{% static 'img/phone-icon.png' %}" width="20px"> +7 (812) 336 82 41 <br>
-				<img src="{% static 'img/email-icon.png' %}" width="20px"> info@ace-spb.ru <br>
-			</div>
-			<div class="main-logo">
+	<link rel="shortcut icon" type="image/x-ico" href="{% static 'img/favicon.ico' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "css/pure-min.css" %}">
+	<script type="text/javascript" src="{% static "js/script.js" %}"></script>
+</head>
+<body>
+
+	<header>
+		<div class="header-logo">
+			<img class="header__img-logo" src="{% static "img/logo.png"%}">
+			<img class="header__img-title" src="{% static "img/title.png"%}">
+		</div>
+		<div class="header-menu pure-menu pure-menu-horizontal">
+		    <ul class="pure-menu-list">
+		        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Главная</a></li>
+		        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+		            <a href="/catalog" id="menuLink1" class="pure-menu-link">Каталог</a>
+		            <ul class="pure-menu-children">
+
+		            	{% for c in categories %}
+		            		<li class="pure-menu-item"><a href="/catalog/{{c.id}}" class="pure-menu-link">{{c.title}}</a></li>
+		            	{% endfor %}
+		                <!--<li class="pure-menu-item"><a href="#" class="pure-menu-link">1</a></li>
+		                <li class="pure-menu-item"><a href="#" class="pure-menu-link">2</a></li>
+		                <li class="pure-menu-item"><a href="#" class="pure-menu-link">3</a></li> -->
+		            </ul>
+		        </li>
+		        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Контакты</a></li>
+		        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Новости</a></li>
+		    </ul>
+		</div>
+
+	</header>
+
+	<main>
+
+		<div class="banner-wrapper">
+			<section class="banner">
 				
-			</div>
+			</section>
+		</div>
+	
+		<div class="index-info-wrapper">
 
-			<div class="index-main-block">
+			<section class="index-toggled-menu">
+	
+				<div class="index-menu-toggler">
 
-				<div class="site-info__products small-3 columns" style="padding-left:0px;padding-right: 0px;">
-					<div>
-						<ul class="menu vertical promoted-menu">
-							<li style="text-align:center">Оборудование</li>
-							{% for p in promoted_products %}
-								<li><a href="{% url 'product' p.id %}">
-									{% if p.promoted_name != '0' %}
-									{{p.promoted_name}}
-									{% else %}
-									{{p.title}}
-									{% endif %}
-								</a></li>
-							{% endfor %}
-
-						</ul>
+					<div class="header-menu pure-menu pure-menu-horizontal">
+					    <ul class="pure-menu-list">
+					        <li onclick="show_promoted();" class="pure-menu-item"><a class="pure-menu-link">Предложения</a></li>
+					        <li onclick="show_categories();" class="pure-menu-item"><a class="pure-menu-link">Разделы</a></li>
+					    </ul>
 					</div>
 				</div>
 
-
-					<div class="banner-text">
-						<a href="{% url 'catalog' %}"><img width="100px" src="{% static 'img/catalog-button.png' %}" ></a>
+				<div class="index-promoted-products">
+				{% for pp in promoted_products %}
+					<div class="promoted-product">
+						<div class="promoted-product__category">
+							<a href="/catalog/{{pp.category.id}}" >{{pp.category.title}}
+						</div>
+						<div class="promoted-product__main">
+							<div class="promoted-product__title">
+								{% if pp.promoted_name != '0' %}
+									<a href="/product/{{pp.id}}" >{{pp.promoted_name}}</a>
+								{% else %}
+									<a href="/product/{{pp.id}}" >{{pp.title}}</a>
+								{% endif %}
+							</div>
+							<div class="promoted-product__buttons">
+								<img src="{% static "img/picture-icon.png" %}">
+								<a href="/product/{{pp.id}}" >Подробнее...</a>
+								
+							</div>
+						</div>
 					</div>
-			</div>
+				{% endfor %}
 
-			<div class="main-menu-block">
+				</div>
 
-				<ul class="main-menu" >
-					<li>
-						<a href="{% url 'index' %}">
-							<img  style="position: relative;top: -2px;" width="20px" src="{% static 'img/home.png' %}">		
-						</a>
-					</li>
-					<li>
-						<a href="{% url 'about' %}">
-							О компании
-						</a>
-					</li>
-					<li>
+				<div class="index-categories" style="display:none">
+					{% for c in categories %}
 						
-						<a href="{% url 'about' %}">
-							Контакты
-						</a>
-					</li>
-					<li>
-						<a href="{% url 'catalog' %}">
-							Каталог				
-						</a>
-					</li>
-					<li>
-						<a href="{% url 'catalog' %}">
-							Услуги
-						</a>
-					</li>
-				</ul>
-			</div>
-			
- 						<div class="site-info__news">
- 								<div class="gallery items-3">
- 
- 								  {% for n in news %}
- 								  	<div id="item-{{forloop.counter}}" class="control-operator"></div>
- 								  {% endfor %}
-  								  
-  									{% for n in news %}
-  										  <figure style="margin:0px;padding: 0px;" class="item">
- 										  	<h2>Новости</h2>
-  										    <p>{{n.text|safe}}</p>
-  										  </figure>
-  									{% endfor %}
- 
- 								  <div class="controls">
- 								  {% for n in news %}
- 								    <a href="#item-{{forloop.counter}}" class="control-button">•</a>
- 								  {% endfor %}
- 
- 								  </div>
- 								</div>
- 						</div>
-				<div class="site-info__photos">
-							<img src="{% static 'img/ludi.jpg' %}" alt="">
-							<img src="{% static 'img/cekh.jpg' %}" alt="">
-							<img src="{% static 'img/zavodi2.jpg' %}" alt="">
-							<img src="{% static 'img/cekh2.jpg' %}" alt="">
+						<div class="index-category">
+							<a href="/catalog/{{c.id}}">
+								<h1 class="index-category__title">{{c.title}}</h1>
+							</a>
+						</div>
+						
+					{% endfor %}
+					
+				</div>
 
-				</div>	
+			</section>
 
-		</main>
-	</div>
+			<section class="index-text">
+				<p>
+					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+				</p>
+			</section>
+
+		</div>
+
+	</main>
+
+	<footer>
 		
-{% endblock %}
+	</footer>
+</body>
+</html>

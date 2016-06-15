@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+	<title>Каталог</title>
+{% endblock %}
+{% block content%}
+		<div class="content">
+
+			<main class="main-index">
+
+				<div class="banner banner--second-narrow banner--product-list">
+					<h1>{{category.title}}</h1>
+				</div>
+
+				<div class="product-list">
+					<div class="product-list__list">
+						
+						{% for p in products %}
+							<div style="margin-bottom: 5px;">
+								<a style="border-bottom:1px solid #ececec;" class="product-link" href="{% url 'product' p.id %}" data-image="{{p.image.url}}">{{p}}</a>
+								<br/>
+							</div>
+						{% endfor %}
+						
+					</div>	
+					<div class="image-preview">
+
+					</div>
+				</div>
+			</main>
+		</div>
+	
+{% endblock %}

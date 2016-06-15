@@ -1,33 +1,93 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block title %}
-	<title>Каталог</title>
-{% endblock %}
-{% block content%}
-		<div class="content">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Главная</title>
+	<link rel="shortcut icon" type="image/x-ico" href="{% static 'img/favicon.ico' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "css/pure-min.css" %}">
+	<script type="text/javascript" src="{% static "js/script.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/list.min.js" %}"></script>
+	<style>
+		.button-secondary {
+	        background: rgb(66, 184, 221);
+	        color: white; /* this is a light blue */
+	    }
+	</style>
+</head>
 
-			<main class="main-index">
+<body>
 
-				<div class="banner banner--second-narrow banner--product-list">
-					<h1>{{category.title}}</h1>
-				</div>
-
-				<div class="product-list">
-					<div class="product-list__list">
-						
-						{% for p in products %}
-							<div style="margin-bottom: 5px;">
-								<a style="border-bottom:1px solid #ececec;" class="product-link" href="{% url 'product' p.id %}" data-image="{{p.image.url}}">{{p}}</a>
-								<br/>
-							</div>
-						{% endfor %}
-						
-					</div>	
-					<div class="image-preview">
-
-					</div>
-				</div>
-			</main>
+	<header>
+		<div class="header-logo">
+			<img class="header__img-logo" src="{% static "img/logo.png"%}">
+			<img class="header__img-title" src="{% static "img/title.png"%}">
 		</div>
-	
-{% endblock %}
+		<div class="header-menu pure-menu pure-menu-horizontal">
+		    <ul class="pure-menu-list">
+		        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Главная</a></li>
+		        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+		            <a href="/catalog" id="menuLink1" class="pure-menu-link">Каталог</a>
+		            <ul class="pure-menu-children">
+
+		            	{% for c in categories %}
+		            		<li class="pure-menu-item">
+		            			<a href="/catalog/{{c.id}}" class="pure-menu-link">{{c.title}}</a>
+		            		</li>
+		            	{% endfor %}
+		                <!--<li class="pure-menu-item"><a href="#" class="pure-menu-link">1</a></li>
+		                <li class="pure-menu-item"><a href="#" class="pure-menu-link">2</a></li>
+		                <li class="pure-menu-item"><a href="#" class="pure-menu-link">3</a></li> -->
+		            </ul>
+		        </li>
+		        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Контакты</a></li>
+		        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Новости</a></li>
+		    </ul>
+		</div>
+
+	</header>
+
+	<main class="product-list-main">
+
+		<div class="product-list-head">
+			<h1>{{category.title}}</h1>
+		</div>
+		
+		<div class="product-list-list">
+			<div id="products">
+
+				<form class="pure-form product-list-search">
+					<input class="search" placeholder="Поиск" />
+				</form>
+
+			  <table class="pure-table product-list-table pure-table-horizontal">
+			    <!-- IMPORTANT, class="list" have to be at tbody -->
+			    <tbody class="list">
+			    	{% for p in products %}
+				      <tr class="product-list-table-row">
+				        <td class="product-title product-list-title">
+				        	<a href="/product/{{p.id}}">{{p.title}}</a>
+				        </td>
+				        <td class="product-list-img"><img src="{% static "img/picture-icon.png" %}"></td>
+				      </tr>
+				    {% endfor %}
+			    </tbody>
+			  </table>
+
+			</div>
+		</div>
+
+	</main>
+
+	<footer>
+		
+	</footer>
+	<script type="text/javascript">
+		var options = {
+		  valueNames: ['product-title']
+		};
+
+		var productList = new List('products', options);
+	</script>
+</body>
+</html>
