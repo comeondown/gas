@@ -65,6 +65,14 @@ header .header__img-title{
 	height: 100%;
 	background-image:  url("../img/blacklogo.jpg");
 	background-size: cover;
+	position: relative;
+}
+.banner-info{
+	position: absolute;
+	bottom: 0;
+	font-size: 35px;
+	color: white;
+	background: rgba(22, 77, 141, 0.5)
 }
 
 .index-info-wrapper{
@@ -279,6 +287,12 @@ table td.table-index-row{
 	.product-text{
 		width: 100%;
 	}
+}
+.footer-text{
+	color: white;
+	font-size: 25px;
+	margin-left: 15px;
+	padding-top: 10px;
 }
 @media (max-width: 840px){
 	header .header__img-title{
