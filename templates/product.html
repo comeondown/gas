@@ -139,7 +139,9 @@
 					{% endif %}
 				</div>
 				<div class="product-options-image" style="display:none">
-					<img width="350px" src="{{product.image.url}}" >
+					<button class="pure-button" onclick="resize_image('minus');">Уменьшить</button>
+					<button class="pure-button" onclick="resize_image('plus');">Увеличить</button>
+					<img class="product-image" style="width:'350px'; src="{{product.image.url}}" >
 				</div>
 			</div>
 		</div>
@@ -151,5 +153,24 @@
 	<footer>
 		
 	</footer>
+	<script>
+		var image = document.getElementsByClassName('product-image')[0];
+		var image_width_init = image.offsetWidth;
+		console.log(image_width_init);
+
+		function resize_image(resize_type){
+
+			if (resize_type=="minus"){
+				if ((image.offsetWidth - 50) > 0){
+					image.style.width = image.offsetWidth - 50;
+				}
+			} else if (resize_type=="plus") {
+				if ((image.offsetWidth + 50) - image_width_init < image_width_init ){
+					image.style.width = image.offsetWidth + 50;
+				}
+			}
+		}
+
+	</script>
 </body>
 </html>
