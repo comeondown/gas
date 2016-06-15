@@ -1,18 +1,14 @@
 {% load static %}
+{% load next %}
+{% load specification_cell_filter %}
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Главная</title>
+	<title>{{product.title}}</title>
 	<link rel="shortcut icon" type="image/x-ico" href="{% static 'img/favicon.ico' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
 	<link rel="stylesheet" type="text/css" href="{% static "css/pure-min.css" %}">
 	<script type="text/javascript" src="{% static "js/script.js" %}"></script>
-	<style>
-		.button-secondary {
-	        background: rgb(66, 184, 221);
-	        color: white; /* this is a light blue */
-	    }
-	</style>
 </head>
 
 <body>
@@ -50,11 +46,17 @@
 
 		<div class="product-wrapper">
 			<div class="product-text">
+				<div class="product-text-title">
+					<h3><a href="{% url 'product_list' product.category.id %}">{{product.category}}</a>/{{product.title}}</h3>
+				</div>
+				<hr>
 				<div class="product-text-description">
+					<h2>Описание</h2>
 					{{product.desctiption | safe }}	
 				</div>
 				<hr>
 				<div class="product-text-text">
+					<h2>Особенности</h2>
 					{{product.text | safe }}
 				</div>
 			</div>
@@ -66,6 +68,78 @@
 					        <li onclick="show_product_image();" class="pure-menu-item"><a class="pure-menu-link">Изображение</a></li>
 					    </ul>
 					</div>
+				</div>
+				<div class="product-options-specification">
+					{% if product.specificationinstance_set.all %}
+						<div class="product-options-table-style-title">
+							Спецификации
+						</div>
+		
+							<table class="pure-table pure-table-bordered">
+								<thead>
+									<th rowspan="2" class="table-index-row">
+										Номер по каталогу
+									</th>
+									{% for field in product.specificationfield_set.all %}
+										{% if field.measure %}
+											<th>
+												{{ field.title }}
+											</th>
+										{% else %}
+											<th rowspan="2">
+												{{ field.title }}
+											</th>
+										{% endif %}
+									{% endfor %}
+									
+								
+								
+								<tr>
+										
+										{% for field in product.specificationfield_set.all %}
+											
+												{% if field.measure %}<th>{{ field.measure }}</th>{% endif %}
+											
+										{% endfor %}
+								</tr>
+								</thead>
+								<tbody>
+									{% for row in product.specificationinstance_set.all %}
+
+											
+											<tr>
+												
+												<td class="table-index-row">
+													{{row.index|safe}}
+												</td>
+
+												{% for field in product.specificationfield_set.all %}
+
+													{% if field|specification_cell_filter:row %}
+														{{field|specification_cell_filter:row|safe}}
+													{% endif %}
+
+												{% endfor %}
+
+											</tr>
+
+									{% endfor %}
+
+							</tbody>
+							</table>
+					{% else %}
+						{% if product.specification_image %}
+							<img width="100%" src="{{product.specification_image.url}}">
+						{% else %}
+							{% if user.is_authenticated %}
+								<a href="{% url 'add_specification' product.id %}">Добавить спецификацию</a>
+							{% endif %}
+						{% endif %}
+
+					{% endif %}
+				</div>
+				<div class="product-options-image" style="display:none">
+					<img width="350px" src="{{product.image.url}}" >
 				</div>
 			</div>
 		</div>
