@@ -6,6 +6,10 @@
 	<link rel="shortcut icon" type="image/x-ico" href="{% static 'img/favicon.ico' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
 	<link rel="stylesheet" type="text/css" href="{% static "css/pure-min.css" %}">
+	<link rel="stylesheet" href="{% static "css/remodal.css" %}">
+	<link rel="stylesheet" href="{% static "css/remodal-default-theme.css" %}">
+	<script type="text/javascript" src="{% static "js/jquery-3.0.0.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/remodal.js" %}"></script>
 	<script type="text/javascript" src="{% static "js/script.js" %}"></script>
 	<script type="text/javascript" src="{% static "js/list.min.js" %}"></script>
 	<style>
@@ -68,7 +72,9 @@
 				        <td class="product-title product-list-title">
 				        	<a href="/product/{{p.id}}">{{p.title}}</a>
 				        </td>
-				        <td class="product-list-img"><img src="{% static "img/picture-icon.png" %}"></td>
+				        <td class="product-list-img">
+				           	<img data-title="{{p.title}}" data-image-url="{{p.image.url}}" onclick="show_modal(this)" src="{% static "img/picture-icon.png" %}">
+				        </td>
 				      </tr>
 				    {% endfor %}
 			    </tbody>
@@ -76,6 +82,16 @@
 
 			</div>
 		</div>
+
+		<a href="#modal">Call the modal with data-remodal-id="modal"</a>
+		<div class="remodal-bg">
+			<div data-remodal-id="modal">
+				<button data-remodal-action="close" class="remodal-close"></button>
+				<h1 class="modal-title">Remodal</h1>
+				<img style="max-width:200px;max-height:400px;" class="modal-image" src="" alt="">
+			</div>
+		</div>
+	</main>
 
 	</main>
 
@@ -88,6 +104,10 @@
 		};
 
 		var productList = new List('products', options);
+
+		var options = {};
+   		var remod = $('[data-remodal-id=modal]').remodal(options);
+
 	</script>
 </body>
 </html>
