@@ -240,6 +240,7 @@ header .header__img-title{
 	background: #E8CE93;
 }
 .product-options-specification{
+	text-align: center;
 	margin: 0 10px 0 10px;
 }
 .product-options-specification table th{
@@ -331,6 +332,9 @@ table td.table-index-row{
 		width: 100%;
 	}
 	.about-text {
+		width: 100%;
+	}
+	.specification-image{
 		width: 100%;
 	}
 }
