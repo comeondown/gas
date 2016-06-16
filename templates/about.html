@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Главная</title>
+	<link rel="shortcut icon" type="image/x-ico" href="{% static 'img/favicon.ico' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "css/pure-min.css" %}">
+	<link rel="stylesheet" href="{% static "css/remodal.css" %}">
+	<link rel="stylesheet" href="{% static "css/remodal-default-theme.css" %}">
+	<script type="text/javascript" src="{% static "js/jquery-3.0.0.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/script.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/remodal.js" %}"></script>
+
+</head>
+<body>
+
+	<header>
+		<div class="header-logo">
+			<img class="header__img-logo" src="{% static "img/logo.png"%}">
+			<img class="header__img-title" src="{% static "img/title.png"%}">
+		</div>
+		<div class="header-menu pure-menu pure-menu-horizontal">
+		    <ul class="pure-menu-list">
+		        <li class="pure-menu-item"><a href="/" class="pure-menu-link">Главная</a></li>
+		        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+		            <a href="/catalog" id="menuLink1" class="pure-menu-link">Каталог</a>
+		            <ul class="pure-menu-children">
+
+		            	{% for c in categories %}
+		            		<li class="pure-menu-item"><a href="/catalog/{{c.id}}" class="pure-menu-link">{{c.title}}</a></li>
+		            	{% endfor %}
+		                <!--<li class="pure-menu-item"><a href="#" class="pure-menu-link">1</a></li>
+		                <li class="pure-menu-item"><a href="#" class="pure-menu-link">2</a></li>
+		                <li class="pure-menu-item"><a href="#" class="pure-menu-link">3</a></li> -->
+		            </ul>
+		        </li>
+		        <li class="pure-menu-item"><a href="{% url 'about' %}" class="pure-menu-link">Контакты</a></li>
+		        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Новости</a></li>
+		    </ul>
+		</div>
+
+	</header>
+
+	<main>
+			<br/>
+
+		<div class="about-text">
+			<p>Компания "Advanced Cmpletion Equipment" OOO "ACE" основана в 2014 году. Располагается в Санкт-Петербурге.
+			Одним из направлений работы является оказание консультаций при выборе, дальнейшая организация продаж и сервис внутрискважинного оборудования. Предлагаемое нами внутрискважинное оборудование производится на совместном американо-китайском предприятии SERVA SJS, расположенном в провинции Хубей на берегу реки Янцзы в центральной части Китая.</p>
+			<p>Производственная компания SERVA SJS сертифицирована по программам качества ISO 9001 и DNV с 1999 года. Внутрискважинное оборудование сертифицировано по API 11D1 с 2005 года.</p>
+			<p>Уникальная, современная и мощная производственная база, использование новейших технологий и материалов, позволяет реализовать самые смелые замыслы в интересах заказчиков, решать сложнейший задачи.</p>
+			<p class="about-text__important">Главными целями компании являются надёжность в партнерстве, качество в работе, уверенность в будущем!</p>
+
+			<div class="about-text__contacts">
+
+				<div id="map" style="width:100%;height:300px;margin: 35px auto 50px auto;">
+			</div>
+
+				<div class="about-text__images">
+					<img width="300px" src="{% static 'img/about-pics.png'%}">
+				</div>
+				<div class="about-text__text-contacts">
+					<div class="about-text__contacts-title">
+						<p>Advanced Completion Equipment</p>
+					</div>
+					<p>Адрес: Санкт-Петербург</p>
+					<p>В.О., 13 линия, 78 оф. 455</p>
+					<p>тел./факс: +7 (812) 336 82 41</p>
+					<p>www.ace-spb.ru</p>
+				</div>
+
+			</div>
+		</div>
+		
+		
+		<script>
+			function initMap() {
+				var myLatLng = {lat: 59.946826, lng: 30.263755};
+			    var mapDiv = document.getElementById('map');
+			    var map = new google.maps.Map(mapDiv, {
+		          center: myLatLng,
+		          zoom: 16
+		        });
+		        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+		        var marker = new google.maps.Marker({
+				  position: myLatLng,
+				  map: map,
+				});
+			};
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+	
+	</main>
+
+	<footer>
+		<div class="footer-text">
+			<p>
+				Advanced Completion Equipment. 
+				<br> 
+				2016 СПб, В.О.  13 линия 78, оф. 455 
+				<br>
+				 email: info@ace-spb.ru <br> +7 (812) 336 82 41
+			 </p>
+		</div>
+	</footer>
+
+</body>
+</html>
