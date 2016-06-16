@@ -6,7 +6,12 @@
 	<link rel="shortcut icon" type="image/x-ico" href="{% static 'img/favicon.ico' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
 	<link rel="stylesheet" type="text/css" href="{% static "css/pure-min.css" %}">
+	<link rel="stylesheet" href="{% static "css/remodal.css" %}">
+	<link rel="stylesheet" href="{% static "css/remodal-default-theme.css" %}">
+	<script type="text/javascript" src="{% static "js/jquery-3.0.0.min.js" %}"></script>
 	<script type="text/javascript" src="{% static "js/script.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/remodal.js" %}"></script>
+
 </head>
 <body>
 
@@ -76,7 +81,7 @@
 								{% endif %}
 							</div>
 							<div class="promoted-product__buttons">
-								<img src="{% static "img/picture-icon.png" %}">
+								<img data-title="{{pp.title}}" data-image-url="{{pp.image}}" onclick="show_modal(this)" src="{% static "img/picture-icon.png" %}">
 								<a href="/product/{{pp.id}}" >Подробнее...</a>
 								
 							</div>
@@ -105,7 +110,15 @@
 			</section>
 
 		</div>
-
+	
+	<a href="#modal">Call the modal with data-remodal-id="modal"</a>
+		<div class="remodal-bg">
+			<div data-remodal-id="modal">
+				<button data-remodal-action="close" class="remodal-close"></button>
+				<h1 class="modal-title">Remodal</h1>
+				<img style="max-width:200px;max-height:400px;" class="modal-image" src="" alt="">
+			</div>
+		</div>
 	</main>
 
 	<footer>
@@ -119,5 +132,11 @@
 			 </p>
 		</div>
 	</footer>
+
+	<script type="text/javascript">
+		var options = {};
+   		var remod = $('[data-remodal-id=modal]').remodal(options);
+	</script>
+
 </body>
 </html>

@@ -25,3 +25,11 @@ function show_product_image(){
 	spec.style.display = "none";
 	img.style.display = "block";
 }
+
+function show_modal(obj){
+	data = obj.dataset;
+	console.log(data);
+	document.getElementsByClassName("modal-title")[0].innerHTML = data.title;
+	document.getElementsByClassName("modal-image")[0].setAttribute("src", data.imageUrl);
+	remod.open();
+}
