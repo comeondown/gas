@@ -81,7 +81,7 @@
 								{% endif %}
 							</div>
 							<div class="promoted-product__buttons">
-								<img data-title="{{pp.title}}" data-image-url="{{pp.image}}" onclick="show_modal(this)" src="{% static "img/picture-icon.png" %}">
+								<img data-title="{{pp.title}}" data-image-url="{{pp.image.url}}" onclick="show_modal(this)" src="{% static "img/picture-icon.png" %}">
 								<a href="/product/{{pp.id}}" >Подробнее...</a>
 								
 							</div>
