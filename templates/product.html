@@ -71,11 +71,12 @@
 				</div>
 				<div class="product-options-specification">
 					{% if product.specificationinstance_set.all %}
+						
 						<div class="product-options-table-style-title">
 							Спецификации
 						</div>
 		
-							<table class="pure-table pure-table-bordered">
+							<table width="100%" class="pure-table pure-table-bordered">
 								<thead>
 									<th rowspan="2" class="table-index-row">
 										Номер по каталогу
@@ -129,7 +130,7 @@
 							</table>
 					{% else %}
 						{% if product.specification_image %}
-							<img width="100%" src="{{product.specification_image.url}}">
+							<img class="specification-image" src="{{product.specification_image.url}}">
 						{% else %}
 							{% if user.is_authenticated %}
 								<a href="{% url 'add_specification' product.id %}">Добавить спецификацию</a>

@@ -270,7 +270,10 @@ table td.table-index-row{
 	text-align: center;
 }
 
-
+.specifiaction-image{
+	width: 80%;
+	text-align: center;
+}
 
 .footer-text{
 	color: white;
